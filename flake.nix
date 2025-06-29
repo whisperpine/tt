@@ -62,6 +62,7 @@
               cargo-edit # managing cargo dependencies
               cargo-deny # linting dependencies
               bacon # background code checker
+              redocly # lint openapi and generate docs
             ];
           };
         }
