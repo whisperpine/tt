@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# check typo issues
+typos --hidden --exclude .git --format brief

@@ -63,7 +63,15 @@
               cargo-deny # linting dependencies
               bacon # background code checker
               redocly # lint openapi and generate docs
+              husky # manage git hooks
+              typos # check typo issues
             ];
+            shellHook = ''
+              # install git hook managed by husky
+              if [ ! -e "./.husky/_" ]; then
+                husky install
+              fi
+            '';
           };
         }
       );
