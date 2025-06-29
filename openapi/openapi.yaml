@@ -1,0 +1,30 @@
+openapi: 3.1.1
+info:
+  title: API for whisperpine/tt project
+  description: API for whisperpine/tt repository on GitHub
+  version: 1.0.0-alpha
+  contact:
+    email: yusonglai64@gmail.com
+  license:
+    name: Apache 2.0
+    identifier: Apache-2.0
+tags:
+  - name: Echo
+    description: Example echo operations
+  - name: Users
+    description: Operations related to users
+security: []
+servers:
+  - url: http://localhost:8080
+    description: Local development server
+components:
+  schemas:
+    User:
+      $ref: "./components/schemas/user.yaml"
+paths:
+  /users:
+    $ref: "./paths/users.yaml"
+  /users/{user_id}:
+    $ref: "./paths/users@{user_id}.yaml"
+  /echo:
+    $ref: "./paths/echo.yaml"

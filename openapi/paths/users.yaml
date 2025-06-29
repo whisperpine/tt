@@ -1,0 +1,15 @@
+get:
+  tags: [Users]
+  summary: List all users
+  operationId: listUsers
+  responses:
+    "404":
+      description: User not found
+    "200":
+      description: Successful response with list of users
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "../openapi.yaml#/components/schemas/User"

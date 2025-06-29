@@ -1,0 +1,20 @@
+get:
+  tags: [Echo]
+  summary: Echo the request body
+  operationId: echoHello
+  requestBody:
+    content:
+      text/plain:
+        schema:
+          type: string
+          example: Hey
+  responses:
+    "200":
+      description: Successful response
+      content:
+        text/plain:
+          schema:
+            type: string
+            example: Hey
+    "400":
+      description: Bad request
