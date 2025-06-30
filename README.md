@@ -1,5 +1,11 @@
 # tt
 
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/whisperpine/tt)](https://github.com/whisperpine/tt/commits/main/)
+[![GitHub License](https://img.shields.io/github/license/whisperpine/tt)](https://github.com/whisperpine/tt/blob/main/LICENSE)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/whisperpine/tt/checks.yml?label=checks)](https://github.com/whisperpine/tt/actions/workflows/checks.yml)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/whisperpine/tt/build.yml)](https://github.com/whisperpine/tt/actions/workflows/build.yml)
+[![GitHub deployments](https://img.shields.io/github/deployments/whisperpine/tt/github-pages?label=pages)](https://github.com/whisperpine/tt/deployments/github-pages)
+
 An OpenAPI driven rust server.
 
 OAS files under [./openapi](./openapi/) work as the *Single Source of Truth*:
@@ -42,6 +48,8 @@ Run `just -l` to see commonly used commands in this repo:
 ```txt
 Available recipes:
     arazzo # run OpenAPI contract tests by Arazzo
+    build  # build the docker image for the local machine's platform
+    buildp # build multi-platform docker images (linux/amd64,linux/arm64)
     bundle # bundle OpenAPI Specifications in to a single file
     doc    # generate API documentation as an HTML file
     gen    # generate server stubs with rust-axum generator
