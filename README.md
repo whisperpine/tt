@@ -43,6 +43,22 @@ cd THIS_REPO && dirnev allow
 
 ## Get Started
 
+Host the service locally by docker and run OpenAPI contract tests:
+
+```sh
+git clone THIS_REPO && cd THIS_REPO
+
+# Setup dev environment described in the "Prerequisites" above,
+# or at least install these tools: just, redocly.
+
+# Run tt-http-app and dependent services.
+docker compose up -d
+# Run OpenAPI contract tests by Arazzo.
+just arazzo
+```
+
+## Explore
+
 Run `just -l` to see commonly used commands in this repo:
 
 ```txt

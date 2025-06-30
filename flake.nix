@@ -59,6 +59,7 @@
           default = pkgs.mkShell {
             packages = with pkgs; [
               # --- others --- #
+              just # just a command runner
               typos # check typo issues
               husky # manage git hooks
 
