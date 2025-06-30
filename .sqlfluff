@@ -1,0 +1,20 @@
+[sqlfluff]
+dialect = postgres
+# AM04 (ambiguous.column_count)
+exclude_rules = AM04
+
+# e.g. SELECT, INSERT, CREATE, DROP
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = upper
+# e.g. table1, table2, column1
+[sqlfluff:rules:capitalisation.identifiers]
+extended_capitalisation_policy = lower
+# e.g. avg(), count(), max(), min()
+[sqlfluff:rules:capitalisation.functions]
+extended_capitalisation_policy = lower
+# e.g. TRUE, FALSE, NULL
+[sqlfluff:rules:capitalisation.literals]
+capitalisation_policy = upper
+# e.g. SERIAL, VARCHAR, TEXT, INT
+[sqlfluff:rules:capitalisation.types]
+extended_capitalisation_policy = upper

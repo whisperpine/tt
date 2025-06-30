@@ -1,3 +1,7 @@
+# ======================================
+# OpenAPI
+# ======================================
+
 # lint OpenAPI Specifications
 lint:
     redocly lint ./openapi/openapi.yaml
@@ -17,6 +21,11 @@ arazzo:
     # run contract tests against the api server
     redocly respect gen.arazzo.yaml --verbose
 
+
+# ======================================
+# Rust
+# ======================================
+
 # generate server stubs with rust-axum generator
 gen:
     sh ./scripts/gen-rust-axum.sh
@@ -25,7 +34,6 @@ gen:
 run:
     RUST_LOG="tt_http_core=debug" \
     cargo run -p tt-http-app
-
 
 # build the docker image for the local machine's platform
 build:
@@ -37,3 +45,12 @@ buildp:
         --platform linux/amd64,linux/arm64 \
         -t tt-http-app \
         .
+
+
+# ======================================
+# PostgreSQL
+# ======================================
+
+# fix SQL linting errors found by sqlfluff
+fix:
+    sqlfluff fix

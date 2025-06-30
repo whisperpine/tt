@@ -72,6 +72,11 @@
               # --- openapi --- #
               openapi-generator-cli # generate code based on OAS
               redocly # lint openapi and generate docs
+
+              # --- postgres --- #
+              postgresql_17 # for `psql` command
+              sqlfluff # sql linter and formatter
+              pgcli # an alternative to psql
             ];
 
             shellHook = ''

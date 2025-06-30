@@ -51,6 +51,8 @@ git clone THIS_REPO && cd THIS_REPO
 # Setup dev environment described in the "Prerequisites" above,
 # or at least install these tools: just, redocly.
 
+# Note: edit ./.env file per your preference.
+cp ./example.env ./.env
 # Run tt-http-app and dependent services.
 docker compose up -d
 # Run OpenAPI contract tests by Arazzo.
