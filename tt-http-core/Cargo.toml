@@ -1,0 +1,25 @@
+[package]
+name = "tt-http-core"
+version.workspace = true
+readme.workspace = true
+authors.workspace = true
+repository.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+tt-openapi = { path = "../tt-openapi", version = "0.1.0-alpha" }
+axum.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+thiserror.workspace = true
+async-trait.workspace = true
+axum-extra.workspace = true
+base64.workspace = true
+bytes.workspace = true
+http.workspace = true
+uuid.workspace = true

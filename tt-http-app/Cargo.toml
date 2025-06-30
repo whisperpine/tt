@@ -1,0 +1,18 @@
+[package]
+name = "tt-http-app"
+version.workspace = true
+readme.workspace = true
+authors.workspace = true
+repository.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+tt-http-core = { path = "../tt-http-core", version = "0.1.0-alpha" }
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+anyhow.workspace = true
