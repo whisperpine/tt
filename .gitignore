@@ -19,3 +19,6 @@ redoc-static.html
 
 # Environment files
 .env
+
+# Local
+todo.md

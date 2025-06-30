@@ -13,3 +13,7 @@ bundle:
 # generate server stubs with rust-axum generator
 gen:
     sh ./scripts/gen-rust-axum.sh
+
+# run the openapi server in debug mode
+run:
+    cargo run -p tt-http-app
