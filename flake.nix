@@ -59,8 +59,8 @@
           default = pkgs.mkShell {
             packages = with pkgs; [
               # --- others --- #
-              husky # manage git hooks
               typos # check typo issues
+              husky # manage git hooks
 
               # --- rust --- #
               rustToolchain
@@ -69,8 +69,8 @@
               bacon # background code checker
 
               # --- openapi --- #
-              redocly # lint openapi and generate docs
               openapi-generator-cli # generate code based on OAS
+              redocly # lint openapi and generate docs
             ];
 
             shellHook = ''

@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # check typo issues
-typos --hidden --exclude .git --format brief
+sh ./scripts/check-typos.sh
