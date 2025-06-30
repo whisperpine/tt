@@ -58,14 +58,21 @@
         {
           default = pkgs.mkShell {
             packages = with pkgs; [
+              # --- others --- #
+              husky # manage git hooks
+              typos # check typo issues
+
+              # --- rust --- #
               rustToolchain
               cargo-edit # managing cargo dependencies
               cargo-deny # linting dependencies
               bacon # background code checker
+
+              # --- openapi --- #
               redocly # lint openapi and generate docs
-              husky # manage git hooks
-              typos # check typo issues
+              openapi-generator-cli # generate code based on OAS
             ];
+
             shellHook = ''
               # install git hook managed by husky
               if [ ! -e "./.husky/_" ]; then

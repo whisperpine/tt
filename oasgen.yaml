@@ -1,0 +1,11 @@
+# Configurations that meant to be used by openapi-generator-cli.
+
+generatorName: rust-axum # -g, --generator
+inputSpec: ./openapi/bundled.yaml # -i, --input
+
+# See the template mustache file:
+# https://github.com/OpenAPITools/openapi-generator/blob/master/modules/openapi-generator/src/main/resources/rust-axum/Cargo.mustache
+additionalProperties:
+  # packageVersion: 1.2.3
+  licenseInfo: "MIT OR Apache-2.0"
+  documentationUrl: README.md

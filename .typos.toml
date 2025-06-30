@@ -3,3 +3,4 @@ extend-ignore-re = []
 
 [default.extend-words]
 sever = "server"
+subs = "stubs"
