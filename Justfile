@@ -13,9 +13,9 @@ bundle:
 # run OpenAPI contract tests by Arazzo
 arazzo:
     # generate test workflows from the openapi spec
-    redocly generate-arazzo ./openapi/openapi.yaml
+    redocly generate-arazzo ./openapi/openapi.yaml -o gen.arazzo.yaml
     # run contract tests against the api server
-    redocly respect auto-generated.arazzo.yaml --verbose
+    redocly respect gen.arazzo.yaml --verbose
 
 # generate server stubs with rust-axum generator
 gen:

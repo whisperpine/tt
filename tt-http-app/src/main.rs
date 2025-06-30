@@ -17,7 +17,6 @@
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     init_tracing_subscriber();
-    // todo: config port by env var.
     let addr = std::net::SocketAddr::from(([0, 0, 0, 0], 8080));
     tt_http_core::start_server(addr).await;
     Ok(())
