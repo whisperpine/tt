@@ -21,7 +21,7 @@ where
 {
     // build our application with a route
     Router::new()
-        .route("/echo", get(echo_hello::<I, A, E>))
+        .route("/echo", post(echo_back::<I, A, E>))
         .route("/users", get(list_users::<I, A, E>))
         .route("/users/{user_id}", get(get_user_by_id::<I, A, E>))
         .with_state(api_impl)
@@ -29,17 +29,17 @@ where
 
 #[derive(validator::Validate)]
 #[allow(dead_code)]
-struct EchoHelloBodyValidator<'a> {
+struct EchoBackBodyValidator<'a> {
     body: &'a String,
 }
 
 #[tracing::instrument(skip_all)]
-fn echo_hello_validation(body: String) -> std::result::Result<(String,), ValidationErrors> {
+fn echo_back_validation(body: String) -> std::result::Result<(String,), ValidationErrors> {
     Ok((body,))
 }
-/// EchoHello - GET /echo
+/// EchoBack - POST /echo
 #[tracing::instrument(skip_all)]
-async fn echo_hello<I, A, E>(
+async fn echo_back<I, A, E>(
     method: Method,
     host: Host,
     cookies: CookieJar,
@@ -52,7 +52,7 @@ where
     E: std::fmt::Debug + Send + Sync + 'static,
 {
     #[allow(clippy::redundant_closure)]
-    let validation = tokio::task::spawn_blocking(move || echo_hello_validation(body))
+    let validation = tokio::task::spawn_blocking(move || echo_back_validation(body))
         .await
         .unwrap();
 
@@ -65,14 +65,14 @@ where
 
     let result = api_impl
         .as_ref()
-        .echo_hello(&method, &host, &cookies, &body)
+        .echo_back(&method, &host, &cookies, &body)
         .await;
 
     let mut response = Response::builder();
 
     let resp = match result {
         Ok(rsp) => match rsp {
-            apis::echo::EchoHelloResponse::Status200_SuccessfulResponse(body) => {
+            apis::echo::EchoBackResponse::Status200_SuccessfulResponse(body) => {
                 let mut response = response.status(200);
                 {
                     let mut response_headers = response.headers_mut().unwrap();
@@ -88,7 +88,7 @@ where
                 let body_content = body;
                 response.body(Body::from(body_content))
             }
-            apis::echo::EchoHelloResponse::Status400_BadRequest => {
+            apis::echo::EchoBackResponse::Status400_BadRequest => {
                 let mut response = response.status(400);
                 response.body(Body::empty())
             }

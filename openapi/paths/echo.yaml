@@ -1,7 +1,7 @@
-get:
+post:
   tags: [Echo]
   summary: Echo the request body
-  operationId: echoHello
+  operationId: echoBack
   requestBody:
     content:
       text/plain:

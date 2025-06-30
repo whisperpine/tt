@@ -10,7 +10,7 @@ use crate::{models, types::*};
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 #[must_use]
 #[allow(clippy::large_enum_variant)]
-pub enum EchoHelloResponse {
+pub enum EchoBackResponse {
     /// Successful response
     Status200_SuccessfulResponse(String),
     /// Bad request
@@ -23,12 +23,12 @@ pub enum EchoHelloResponse {
 pub trait Echo<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHandler<E> {
     /// Echo the request body.
     ///
-    /// EchoHello - GET /echo
-    async fn echo_hello(
+    /// EchoBack - POST /echo
+    async fn echo_back(
         &self,
         method: &Method,
         host: &Host,
         cookies: &CookieJar,
         body: &String,
-    ) -> Result<EchoHelloResponse, E>;
+    ) -> Result<EchoBackResponse, E>;
 }
