@@ -84,6 +84,8 @@
               if [ ! -e "./.husky/_" ]; then
                 husky install
               fi
+              # list containers backed by docker compose
+              docker compose ps --all
             '';
           };
         }
