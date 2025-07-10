@@ -38,10 +38,8 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           components: clippy
-      # Cache Rust dependencies to speed up builds.
       - name: Cache Rust dependencies
         uses: Swatinem/rust-cache@v2
-      # Run cargo clippy in release mode.
       - name: Run cargo clippy
         # The `-- -D warnings` flag treats all warnings as errors.
         run: cargo clippy --release -- -D warnings
@@ -55,9 +53,7 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           components: rust-docs
-      # Cache Rust dependencies to speed up builds.
       - name: Cache Rust dependencies
         uses: Swatinem/rust-cache@v2
-      # Run cargo clippy in release mode.
       - name: Run cargo doc
         run: cargo doc
