@@ -15,4 +15,3 @@ tt-http-core = { path = "../tt-http-core", version = "0.1.0-alpha" }
 tokio.workspace = true
 tracing.workspace = true
 tracing-subscriber.workspace = true
-anyhow.workspace = true

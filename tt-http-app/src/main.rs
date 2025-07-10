@@ -15,12 +15,19 @@
 )]
 
 #[tokio::main]
-async fn main() -> anyhow::Result<()> {
+async fn main() {
     setup_panic_hook();
     init_tracing_subscriber();
+    let database_url = get_database_url();
     let addr = std::net::SocketAddr::from(([0, 0, 0, 0], 8080));
-    tt_http_core::start_server(addr).await;
-    Ok(())
+    tt_http_core::start_server(addr, &database_url).await;
+}
+
+fn get_database_url() -> String {
+    const DATABASE_URL: &str = "DATABASE_URL";
+    std::env::var(DATABASE_URL).unwrap_or_else(|_| {
+        panic!("cannot find env var: {DATABASE_URL}");
+    })
 }
 
 fn init_tracing_subscriber() {

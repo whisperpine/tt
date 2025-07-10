@@ -32,7 +32,7 @@ gen:
 
 # run the openapi server in debug mode
 run:
-    RUST_LOG="tt_http_core=debug" \
+    RUST_LOG="tt_http_core=debug,tt_http_app=debug" \
     cargo run -p tt-http-app
 
 # build the docker image for the local machine's platform
