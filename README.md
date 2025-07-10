@@ -31,12 +31,12 @@ flowchart LR
   oas -->|openapi-generator| ttopen
   ttopen --> ttcore
   ttcore --> ttapp
-  oas -..->|openapi-generator| csdk
-  csdk -..-> cc
-  cc -..-> ttapp
+  oas -.->|openapi-generator| csdk
+  csdk -.-> cc
+  cc -.-> ttapp
   oas -->|redocly| web
   oas -->|redocly| arazzo
-  arazzo -..-|contract tests| ttapp
+  arazzo -.-|contract tests| ttapp
 
   subgraph services
     db("database")

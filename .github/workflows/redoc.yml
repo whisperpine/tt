@@ -22,7 +22,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  deploy-github-pages:
+    name: build and deploy github pages
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

@@ -29,6 +29,7 @@
 /bin
 /target
 /.direnv
+/.github
 /.husky
 /scripts
 /openapi
