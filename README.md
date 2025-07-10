@@ -25,8 +25,8 @@ flowchart LR
   ttcore("tt-http-core<br>(server impl)")
   csdk("client sdk<br>(e.g. ts, rust)")
   cc("client app")
-  web("api web page")
   arazzo("arazzo configurations")
+  web("api web page")
 
   oas -->|openapi-generator| ttopen
   ttopen --> ttcore
@@ -34,14 +34,17 @@ flowchart LR
   oas -.->|openapi-generator| csdk
   csdk -.-> cc
   cc -.-> ttapp
-  oas -->|redocly| web
   oas -->|redocly| arazzo
   arazzo -.-|contract tests| ttapp
+  oas -->|redocly| web
 
   subgraph services
-    db("database")
     ttapp("tt-http-app<br>(the app)")
+
   end
+
+  db("db")
+  ttapp --- db
 
   classDef red_stroke stroke: #f66
   style csdk stroke-dasharray: 5

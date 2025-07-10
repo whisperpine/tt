@@ -43,7 +43,7 @@ pub(crate) static DB_CONNECTION_TIMEOUT: LazyLock<Duration> =
             .map(Duration::from_secs_f32)
             .unwrap_or_else(|e| panic!("{DB_CONN_TIMEOUT} should be a float number. error: {e}")),
         Err(_) => {
-            let default_value = Duration::from_secs_f32(0.5);
+            let default_value = Duration::from_secs_f32(2.5);
             tracing::debug!(
                 "env var {DB_CONN_TIMEOUT} hasn't been set, using default value: {default_value:?}",
             );

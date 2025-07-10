@@ -32,6 +32,7 @@ gen:
 
 # run the openapi server in debug mode
 run:
+    DB_CONN_TIMEOUT=0.5 \
     RUST_LOG="tt_http_core=debug,tt_http_app=debug" \
     cargo run -p tt-http-app
 

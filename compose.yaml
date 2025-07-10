@@ -1,13 +1,15 @@
 # This file is for local tests, NOT for production.
 
 services:
-  tt-http-app:
-    init: true # Terminate container immediately when pressing `ctrl-c`.
-    # image: tt-http-app
-    # image: ghcr.io/whisperpine/tt-http-app:xxxxxxx
-    image: ghcr.io/whisperpine/tt-http-app:latest
-    ports:
-      - 8080:8080
+  postgres:
+    image: postgres:17.5
+    shm_size: 128mb
     environment:
-      # Log level candidates: trace, debug, info, warn, error.
-      RUST_LOG: tt_http_core=debug
+      POSTGRES_USER: ${PGUSER}
+      POSTGRES_PASSWORD: ${PGPASSWORD}
+      PGPORT: ${PGPORT}
+      POSTGRES_DB: ${PGDATABASE}
+    ports:
+      - "${PGPORT}:${PGPORT}"
+    # volumes: # Deliberately choose temporary storage.
+    restart: unless-stopped
