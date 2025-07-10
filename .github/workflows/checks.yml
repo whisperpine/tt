@@ -45,3 +45,19 @@ jobs:
       - name: Run cargo clippy
         # The `-- -D warnings` flag treats all warnings as errors.
         run: cargo clippy --release -- -D warnings
+
+  cargo-doc:
+    runs-on: ubuntu-latest
+    name: lint rust docstring by rustdoc
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rust-docs
+      # Cache Rust dependencies to speed up builds.
+      - name: Cache Rust dependencies
+        uses: Swatinem/rust-cache@v2
+      # Run cargo clippy in release mode.
+      - name: Run cargo doc
+        run: cargo doc
