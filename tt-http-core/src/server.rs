@@ -25,14 +25,10 @@ pub async fn start_server(addr: std::net::SocketAddr) {
 
     let listener = tokio::net::TcpListener::bind(addr)
         .await
-        .unwrap_or_else(|e| {
-            tracing::error!("{e}");
-            panic!("failed to bind SocketAddr: {addr}")
-        });
+        .unwrap_or_else(|e| panic!("failed to bind SocketAddr: {addr}. error: {e}"));
     tracing::info!("listening at http://localhost:{}", addr.port());
 
-    axum::serve(listener, app).await.unwrap_or_else(|e| {
-        tracing::error!("{e}");
-        panic!("failed to start axum server")
-    });
+    axum::serve(listener, app)
+        .await
+        .unwrap_or_else(|e| panic!("failed to start axum server. error: {e}"));
 }
