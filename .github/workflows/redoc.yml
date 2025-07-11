@@ -25,7 +25,7 @@ jobs:
   deploy-github-pages:
     name: build and deploy github pages
     environment:
-      name: github-pages
+      name: openapi-docs
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
