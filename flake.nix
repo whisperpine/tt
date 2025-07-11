@@ -56,6 +56,7 @@
       devShells = forEachSupportedSystem (
         { pkgs }:
         {
+          # the default dev environment
           default = pkgs.mkShell {
             packages = with pkgs; [
               # --- others --- #
@@ -87,6 +88,16 @@
               # list containers backed by docker compose
               docker compose ps --all
             '';
+          };
+
+          # This dev environment is used in CI.
+          # nix develop .#gen
+          gen = pkgs.mkShell {
+            packages = with pkgs; [
+              rustToolchain
+              openapi-generator-cli # generate code based on OAS
+              redocly # lint openapi and generate docs
+            ];
           };
         }
       );

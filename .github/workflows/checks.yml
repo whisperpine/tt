@@ -63,14 +63,9 @@ jobs:
     name: check if generated code is update to date
     steps:
       - uses: actions/checkout@v4
-      - name: Install Rust
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          components: rustfmt
       - uses: cachix/install-nix-action@v31
       - name: Generate code from openapi specifications
-        # shell: nix shell nixpkgs#redocly nixpkgs#openapi-generator-cli --quiet --command bash {0}
-        shell: nix develop --quiet --command bash {0}
+        shell: nix develop .#gen --quiet --command bash {0}
         run: |
           sh ./scripts/gen-rust-axum.sh
           sh ./scripts/git-status.sh
