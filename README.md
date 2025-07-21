@@ -1,10 +1,9 @@
 # tt
 
-[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/whisperpine/tt)](https://github.com/whisperpine/tt/commits/main/)
-[![GitHub License](https://img.shields.io/github/license/whisperpine/tt)](https://github.com/whisperpine/tt/blob/main/LICENSE)
-[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/whisperpine/tt/checks.yml?label=checks)](https://github.com/whisperpine/tt/actions/workflows/checks.yml)
-[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/whisperpine/tt/build.yml)](https://github.com/whisperpine/tt/actions/workflows/build.yml)
-[![GitHub deployments](https://img.shields.io/github/deployments/whisperpine/tt/github-pages?label=pages)](https://github.com/whisperpine/tt/deployments/github-pages)
+[![license](https://img.shields.io/github/license/whisperpine/tt)](https://github.com/whisperpine/tt/blob/main/LICENSE)
+[![checks](https://img.shields.io/github/actions/workflow/status/whisperpine/tt/checks.yml?logo=github&label=checks)](https://github.com/whisperpine/tt/actions/workflows/checks.yml)
+[![build](https://img.shields.io/github/actions/workflow/status/whisperpine/tt/build.yml?logo=github&label=build)](https://github.com/whisperpine/tt/actions/workflows/build.yml)
+[![openapi-docs](https://img.shields.io/github/deployments/whisperpine/tt/openapi-docs?label=openapi-docs)](https://github.com/whisperpine/tt/deployments/openapi-docs)
 
 An OpenAPI driven rust server.
 
