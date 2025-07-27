@@ -1,10 +1,11 @@
 name: Build Container Image
 
 on:
+  pull_request:
+  workflow_dispatch:
   push:
     branches: ["main"]
-  # Allows you to run this workflow manually from the Actions tab.
-  workflow_dispatch:
+    tags: ["v*"]
 
 jobs:
   build-and-push:
@@ -24,18 +25,24 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Set outputs
-        id: vars
-        run: echo "sha_short=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+      - name: Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository_owner }}/tt-http-app
+          tags: |
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha,prefix=,format=short
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
-          context: . # Path to dockerfile (current directory).
-          push: true # Push to registry.
-          tags: |
-            ghcr.io/${{ github.repository_owner }}/tt-http-app:latest
-            ghcr.io/${{ github.repository_owner }}/tt-http-app:${{ steps.vars.outputs.sha_short }}
+          context: .
+          push: true
           platforms: linux/amd64,linux/arm64
+          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.meta.outputs.tags }}
 
   scan-cve:
     name: scan CVE on the image
@@ -45,13 +52,16 @@ jobs:
       security-events: write
     steps:
       - uses: actions/checkout@v4
-      - name: Set outputs
-        id: vars
-        run: echo "sha_short=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+      - name: Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository_owner }}/tt-http-app
+          tags: type=sha,prefix=,format=short
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.32.0
         with:
-          image-ref: ghcr.io/${{ github.repository_owner }}/tt-http-app:${{ steps.vars.outputs.sha_short }}
+          image-ref: ${{ steps.meta.outputs.tags }}
           severity: CRITICAL,HIGH,MEDIUM
           output: trivy-results.sarif
           format: sarif
