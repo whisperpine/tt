@@ -63,6 +63,7 @@
               just # just a command runner
               typos # check typo issues
               husky # manage git hooks
+              git-cliff # generate changelog
 
               # --- rust --- #
               rustToolchain
