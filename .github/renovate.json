@@ -16,6 +16,10 @@
     "target/**",
     "tt-openapi/**"
   ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["* * 2 * *"]
+  },
   "packageRules": [
     {
       "matchManagers": ["cargo"],
