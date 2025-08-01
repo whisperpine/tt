@@ -19,35 +19,35 @@ OAS files under [./openapi](./openapi/) work as the *Single Source of Truth*:
 
 ```mermaid
 flowchart LR
-  oas(openapi<br>specifications):::red_stroke
-  ttopen("tt-openapi<br>(server stubs)")
-  ttcore("tt-http-core<br>(server impl)")
-  csdk("client sdk<br>(e.g. ts, rust)")
-  cc("client app")
-  arazzo("arazzo configurations")
-  web("api web page")
+  oas(OpenAPI<br>Specifications):::red_stroke
+  ttopen("tt-openapi<br>(Server Stubs)")
+  ttcore("tt-http-core<br>(Server Impl)")
+  csdk("Client SDK")
+  cc("Client App")
+  arazzo("Arazzo Configurations")
+  web("API Web Page")
 
   oas -->|openapi-generator| ttopen
   ttopen --> ttcore
   ttcore --> ttapp
-  oas -.->|openapi-generator| csdk
-  csdk -.-> cc
+  oas -->|openapi-generator| csdk
+  csdk --> cc
   cc -.-> ttapp
   oas -->|redocly| arazzo
-  arazzo -.-|contract tests| ttapp
+  arazzo -.->|contract tests| ttapp
   oas -->|redocly| web
 
   subgraph services
-    ttapp("tt-http-app<br>(the app)")
+    ttapp("tt-http-app<br>(The App)")
 
   end
 
-  db("db")
+  db("DB")
   ttapp --- db
 
   classDef red_stroke stroke: #f66
-  style csdk stroke-dasharray: 5
-  style cc stroke-dasharray: 5
+  style csdk stroke-dasharray: 2
+  style cc stroke-dasharray: 2
 ```
 
 ## Prerequisites
