@@ -7,5 +7,5 @@
 # Author: Yusong
 
 redocly build-docs \
-    --output pages/index.html \
-    openapi/openapi.yaml
+  --output pages/index.html \
+  openapi/openapi.yaml

@@ -10,17 +10,17 @@ set -e
 
 # Bundle OpenAPI Specifications in to a single file.
 redocly bundle \
-    -o ./openapi/bundled.yaml \
-    ./openapi/openapi.yaml
+  -o ./openapi/bundled.yaml \
+  ./openapi/openapi.yaml
 
 package_name="tt-openapi"
 output_dir="./$package_name"
 
 # Generate server stubs with rust-axum generator.
 openapi-generator-cli generate \
-    --package-name $package_name \
-    --output $output_dir \
-    --config oasgen.yaml
+  --package-name $package_name \
+  --output $output_dir \
+  --config oasgen.yaml
 
 ## Learn more about "openapi-generator-cli generate" command.
 # openapi-generator-cli help generate

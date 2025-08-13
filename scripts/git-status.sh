@@ -7,7 +7,7 @@
 # Author: Yusong
 
 if [ "$(git status -s)" ]; then
-    echo "local changes detected:"
-    git status -s
-    exit 1
+  echo "local changes detected:"
+  git status -s
+  exit 1
 fi
