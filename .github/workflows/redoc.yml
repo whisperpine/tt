@@ -35,7 +35,7 @@ jobs:
       - name: Generate OpenAPI documentation
         shell: nix shell nixpkgs#redocly --quiet --command bash {0}
         run: sh ./scripts/build-docs.sh
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v4
         with:
           path: "./pages"
       - name: Deploy to GitHub Pages
