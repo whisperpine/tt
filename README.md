@@ -1,11 +1,20 @@
-# tt
+<!-- markdownlint-disable MD033 -->
+<h1 align="center">tt</h1>
 
+<div align="center">
+
+[![OpenAPI](https://img.shields.io/badge/OpenAPI-6BA539?logo=openapiinitiative&logoColor=white)](https://www.openapis.org/)
 [![license](https://img.shields.io/github/license/whisperpine/tt)](https://github.com/whisperpine/tt/blob/main/LICENSE)
 [![checks](https://img.shields.io/github/actions/workflow/status/whisperpine/tt/checks.yml?logo=github&label=checks)](https://github.com/whisperpine/tt/actions/workflows/checks.yml)
 [![build](https://img.shields.io/github/actions/workflow/status/whisperpine/tt/build.yml?logo=github&label=build)](https://github.com/whisperpine/tt/actions/workflows/build.yml)
 [![openapi-docs](https://img.shields.io/github/deployments/whisperpine/tt/openapi-docs?label=openapi-docs)](https://github.com/whisperpine/tt/deployments/openapi-docs)
 
-An OpenAPI driven rust server.
+Generate rust server stubs based on OpenAPI Specifications,
+reduce boilerplates and ensure consistency.
+
+</div>
+
+## How It Works
 
 OAS files under [./openapi](./openapi/) work as the *Single Source of Truth*:
 
