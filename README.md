@@ -14,6 +14,19 @@ reduce boilerplates and ensure consistency.
 
 </div>
 
+## Background
+
+With OpenAPI design finalized upfront, we can achieve:
+
+- Efficiency: automated generation of server stubs and client SDKs saves
+  development time.
+- Consistency: ensures server and client code align with a predefined contract,
+  reducing mismatches.
+- Maintainability: changes to the API are made in the specification,
+  automatically reflecting in generated code.
+- Scalability: standardized specs facilitate integration and adoption by
+  multiple clients or services.
+
 ## How It Works
 
 OAS files under [./openapi](./openapi/) work as the *Single Source of Truth*:
