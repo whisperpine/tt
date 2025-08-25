@@ -3,10 +3,10 @@
 
 <div align="center">
 
-[![OpenAPI](https://img.shields.io/badge/OpenAPI-6BA539?logo=openapiinitiative&logoColor=white)](https://www.openapis.org/)
-[![license](https://img.shields.io/github/license/whisperpine/tt)](https://github.com/whisperpine/tt/blob/main/LICENSE)
+[![license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/whisperpine/tt/blob/main/LICENSE)
 [![checks](https://img.shields.io/github/actions/workflow/status/whisperpine/tt/checks.yml?logo=github&label=checks)](https://github.com/whisperpine/tt/actions/workflows/checks.yml)
 [![build](https://img.shields.io/github/actions/workflow/status/whisperpine/tt/build.yml?logo=github&label=build)](https://github.com/whisperpine/tt/actions/workflows/build.yml)
+[![release](https://img.shields.io/github/v/release/whisperpine/tt?logo=github)](https://github.com/whisperpine/tt/releases)
 [![openapi-docs](https://img.shields.io/github/deployments/whisperpine/tt/openapi-docs?label=openapi-docs)](https://github.com/whisperpine/tt/deployments/openapi-docs)
 
 Generate rust server stubs based on OpenAPI Specifications,
