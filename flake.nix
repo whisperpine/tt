@@ -64,6 +64,7 @@
               typos # check typo issues
               husky # manage git hooks
               git-cliff # generate changelog
+              cocogitto # conventional commit toolkit
 
               # --- rust --- #
               rustToolchain
