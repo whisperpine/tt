@@ -1,4 +1,12 @@
 #!/bin/sh
 
-# check typo issues
-sh ./scripts/check-typos.sh
+# Purpose: check typos in all files excluding ./.git
+# Usage: make this script the git pre-commit hook
+# Dependencies: typos
+# Date: 2025-09-02
+# Author: Yusong
+
+set -e
+
+# Check spelling.
+typos --hidden --exclude .git --format brief
