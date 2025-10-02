@@ -2,7 +2,7 @@
 
 services:
   postgres:
-    image: postgres:17.6
+    image: postgres:18.0
     shm_size: 128mb
     environment:
       POSTGRES_USER: ${PGUSER}
