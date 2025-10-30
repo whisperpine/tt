@@ -36,6 +36,7 @@ pub trait Users<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHa
     /// GetUserById - GET /users/{user_id}
     async fn get_user_by_id(
         &self,
+
         method: &Method,
         host: &Host,
         cookies: &CookieJar,
@@ -47,6 +48,7 @@ pub trait Users<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHa
     /// ListUsers - GET /users
     async fn list_users(
         &self,
+
         method: &Method,
         host: &Host,
         cookies: &CookieJar,

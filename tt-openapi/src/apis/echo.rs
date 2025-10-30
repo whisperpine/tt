@@ -26,6 +26,7 @@ pub trait Echo<E: std::fmt::Debug + Send + Sync + 'static = ()>: super::ErrorHan
     /// EchoBack - POST /echo
     async fn echo_back(
         &self,
+
         method: &Method,
         host: &Host,
         cookies: &CookieJar,
