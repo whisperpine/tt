@@ -58,6 +58,7 @@
         {
           # the default dev environment
           default = pkgs.mkShell {
+            # The Nix packages installed in the dev environment.
             packages = with pkgs; [
               # --- others --- #
               just # just a command runner
@@ -82,19 +83,25 @@
               pgcli # an alternative to psql
             ];
 
+            # The shell script executed when the environment is activated.
             shellHook = ''
-              # install git hook managed by husky
+              # Print the last modified date of "flake.lock".
+              stat flake.lock | grep "Modify" |
+                awk '{printf "\"flake.lock\" last modified on: %s", $2}' &&
+                echo " ($((($(date +%s) - $(stat -c %Y flake.lock)) / 86400)) days ago)"
+              # Install git hooks managed by husky.
               if [ ! -e "./.husky/_" ]; then
                 husky install
               fi
-              # list containers backed by docker compose
+              # List containers backed by docker compose.
               docker compose ps --all
             '';
           };
 
           # This dev environment is used in CI.
-          # nix develop .#gen
+          # "nix develop .#gen"
           gen = pkgs.mkShell {
+            # The Nix packages installed in the dev environment.
             packages = with pkgs; [
               rustToolchain
               openapi-generator-cli # generate code based on OAS
