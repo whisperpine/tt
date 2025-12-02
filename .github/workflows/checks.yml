@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     name: check misspelling by typos
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: cachix/install-nix-action@v31
       - name: Run typos command
         shell: nix shell nixpkgs#typos --quiet --command bash {0}
@@ -22,7 +22,7 @@ jobs:
     # Only run this step in the main branch.
     if: github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: cachix/install-nix-action@v31
       - name: Check the latest commit message
         shell: nix shell nixpkgs#cocogitto --quiet --command bash {0}
@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     name: lint markdown by markdownlint
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: cachix/install-nix-action@v31
       - name: Run markdownlint command
         shell: nix shell nixpkgs#markdownlint-cli --quiet --command bash {0}
@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     name: lint rust code by clippy
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
         with:
@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     name: lint rust docstring by rustdoc
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
         with:
@@ -77,7 +77,7 @@ jobs:
     runs-on: ubuntu-latest
     name: check if generated code is update to date
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: cachix/install-nix-action@v31
       - name: Generate code from openapi specifications
         shell: nix develop .#gen --quiet --command bash {0}
@@ -91,7 +91,7 @@ jobs:
     permissions:
       security-events: write
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Run Trivy vulnerability scanner in repo mode
         uses: aquasecurity/trivy-action@0.33.1
         with:
@@ -116,7 +116,7 @@ jobs:
     permissions:
       security-events: write
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Run Trivy vulnerability scanner in repo mode
         uses: aquasecurity/trivy-action@0.33.1
         with:
