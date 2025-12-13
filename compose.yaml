@@ -13,3 +13,8 @@ services:
       - "${PGPORT}:${PGPORT}"
     # volumes: # Deliberately choose temporary storage.
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 1.5s
+      timeout: 1s
+      retries: 5
