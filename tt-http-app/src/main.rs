@@ -46,7 +46,7 @@ fn init_tracing_subscriber() {
 
 /// Call this function in `main()` to setup panic hook.
 fn setup_panic_hook() {
-    use std::panic::{set_hook, PanicHookInfo};
+    use std::panic::{PanicHookInfo, set_hook};
     set_hook(Box::new(|panic_info: &PanicHookInfo| {
         // Extract the panic message.
         let message = panic_info

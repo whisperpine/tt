@@ -1,9 +1,11 @@
 /// Creates a PostgreSQL connection pool with the specified database URL.
 ///
 /// ## Panics
+///
 /// This function will panic if it fails to establish a connection to the database.
 ///
 /// ## Examples
+///
 /// ```rust,ignore
 /// #[tokio::main]
 /// async fn main() {

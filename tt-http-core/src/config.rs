@@ -1,11 +1,11 @@
 use std::sync::LazyLock;
 use std::time::Duration;
 
-/// Program version.
-pub const PKG_VERSION: &str = env!("CARGO_PKG_VERSION");
-
 /// Crate name.
 pub const CRATE_NAME: &str = env!("CARGO_CRATE_NAME");
+
+/// Program version.
+pub(crate) const PKG_VERSION: &str = env!("CARGO_PKG_VERSION");
 
 /// Env var which is used to set [`MAX_DB_CONNECTIONS`].
 const MAX_DB_CONN: &str = "MAX_DB_CONN";

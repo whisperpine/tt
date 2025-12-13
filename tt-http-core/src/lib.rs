@@ -18,10 +18,10 @@ mod db;
 mod error;
 mod server;
 
-pub(crate) use config::{DB_CONNECTION_TIMEOUT, MAX_DB_CONNECTIONS};
+pub(crate) use config::{DB_CONNECTION_TIMEOUT, MAX_DB_CONNECTIONS, PKG_VERSION};
 pub(crate) use db::connection_pool;
 pub(crate) use error::{Error, Result};
 pub(crate) use server::ServerImpl;
 
-pub use config::{CRATE_NAME, PKG_VERSION};
+pub use config::CRATE_NAME;
 pub use server::start_server;

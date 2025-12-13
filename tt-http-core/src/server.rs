@@ -13,6 +13,7 @@ impl tt_openapi::apis::ErrorHandler<crate::Error> for ServerImpl {}
 /// Starts the HTTP server and binds it to the specified address.
 ///
 /// ## Panics
+///
 /// This function will panic if:
 /// - The server fails to bind to the specified [`SocketAddr`](std::net::SocketAddr).
 /// - The server fails to start serving requests ([`axum::serve()`]).
