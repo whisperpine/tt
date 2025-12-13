@@ -117,12 +117,17 @@ Run `just -l` to see commonly used commands in this repo:
 
 ```txt
 Available recipes:
-    arazzo # run OpenAPI contract tests by Arazzo
-    build  # build the docker image for the local machine's platform
-    buildp # build multi-platform docker images (linux/amd64,linux/arm64)
-    bundle # bundle OpenAPI Specifications in to a single file
-    doc    # generate API documentation as an HTML file
-    gen    # generate server stubs with rust-axum generator
-    lint   # lint OpenAPI Specifications
-    run    # run the openapi server in debug mode
+    [OpenAPI]
+    arazzo  # run OpenAPI contract tests by Arazzo
+    bundle  # bundle OpenAPI Specifications in to a single file
+    doc     # generate API documentation as an HTML file
+    lint    # lint OpenAPI Specifications
+
+    [Rust]
+    gen     # generate server stubs with rust-axum generator
+    run     # run the openapi server in debug mode
+    spin-up # spin up docker compose services and run the backend app
+
+    [SQL]
+    fix     # fix SQL linting errors found by sqlfluff
 ```
