@@ -87,7 +87,7 @@ cd THIS_REPO && nix develop
 [nix-direnv](https://github.com/nix-community/nix-direnv)
 is highly recommended.
 It automatically runs `nix develop` every
-time you `cd` to the project.
+time you `cd` into the project directory.
 
 ```sh
 # `dirnev allow` needs to be run only once.
@@ -103,13 +103,11 @@ Host the service locally by docker and run OpenAPI contract tests:
 git clone THIS_REPO && cd THIS_REPO
 
 # Setup dev environment described in the "Prerequisites" above,
-# or at least install these tools: just, redocly.
+# or at least install these tools: just, redocly, rust toolchain.
 
-# Note: edit ./.env file per your preference.
-cp ./example.env ./.env
-# Run tt-http-app and dependent services.
-docker compose up -d
-# Run OpenAPI contract tests by Arazzo.
+# Run the backend application and dependent services.
+just spin-up
+# Run OpenAPI contract tests by Arazzo (in ANOTHER terminal).
 just arazzo
 ```
 
