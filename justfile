@@ -40,17 +40,8 @@ run:
   RUST_LOG="tt_http_core=debug,tt_http_app=debug" \
   cargo run -p tt-http-app
 
-# build the docker image for the local machine's platform
-build:
-  docker build -t tt-http-app .
-
-# build multi-platform docker images (linux/amd64,linux/arm64)
-buildp:
-  docker build \
-    --platform linux/amd64,linux/arm64 \
-    -t tt-http-app \
-    .
-
+spin-up:
+  sh ./scripts/test-local.sh
 
 # --------------------------------------
 # PostgreSQL
