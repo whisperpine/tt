@@ -1,12 +1,6 @@
 [workspace]
 resolver = "3"
-members = [
-  "tt-openapi",
-  "tt-http-core",
-  "tt-http-app",
-  # "tt-mqtt-core",
-  # "tt-mqtt-app",
-]
+members = ["tt-openapi", "tt-http-core", "tt-http-app"]
 
 [workspace.package]
 version = "0.1.0-alpha"
