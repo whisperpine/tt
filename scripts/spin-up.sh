@@ -39,10 +39,23 @@ tear_down_flag=0
 if ! docker compose ps | grep -q "tt-postgres"; then
   echo "Info: Docker compose services are not running. Starting them..."
   docker compose up -d
-  echo "Info: Waiting for services to be ready..."
-  sleep 1
+  container_id=$(docker compose ps -q postgres)
+  if [ -z "$container_id" ]; then
+    echo "Error: Cannot find a service name 'postgres' in compose.yaml."
+    exit 1
+  fi
   # Only tear down when exiting if services were not running before this script.
   tear_down_flag=1
+  echo "Info: Waiting for services to be ready..."
+  count=0
+  while [ $count -lt 10 ]; do
+    count=$((count + 1))
+    health_status=$(docker inspect --format "{{json .State.Health.Status }}" "$container_id" | tr -d '"')
+    if [ "$health_status" = "health" ]; then
+      break
+    fi
+    sleep "0.5"
+  done
 fi
 
 # This function should be used for tearing down services in cases like SIGINT.
