@@ -45,12 +45,12 @@ if ! docker compose ps | grep -q "tt-postgres"; then
   tear_down_flag=1
 fi
 
-# This function should be used to handle SIGINT and SIGTERM.
+# This function should be used for tearing down services in cases like SIGINT.
 graceful_shutdown() {
   if [ "$tear_down_flag" -ne 0 ]; then
     echo ""
-    echo "Info: Script interrupted. Tearing down docker compose services..."
-    docker compose down
+    echo "Info: Tearing down docker compose services..."
+    docker compose down --timeout 1
   fi
   exit
 }
@@ -59,7 +59,9 @@ graceful_shutdown() {
 trap graceful_shutdown INT TERM
 
 # Compile and run the rust backend application.
-DB_CONN_TIMEOUT=0.5 \
+if ! DB_CONN_TIMEOUT=0.5 DATABASE_URL="$DATABASE_URL" \
   RUST_LOG="tt_http_core=debug,tt_http_app=debug" \
-  DATABASE_URL="$DATABASE_URL" \
-  cargo run -p tt-http-app
+  cargo run -p tt-http-app; then
+  # If the backend app panics, also try to tear services down.
+  graceful_shutdown
+fi
