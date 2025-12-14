@@ -18,14 +18,13 @@ reduce boilerplates and ensure consistency.
 
 With OpenAPI design finalized upfront, we can achieve:
 
-- Efficiency: automated generation of server stubs and client SDKs saves
-  development time.
-- Consistency: ensures server and client code align with a predefined contract,
-  reducing mismatches.
-- Maintainability: changes to the API are made in the specification,
-  automatically reflecting in generated code.
-- Scalability: standardized specs facilitate integration and adoption by
-  multiple clients or services.
+- Efficiency:
+  save development time by automatically generate server stubs and client SDKs.
+- Consistency:
+  ensure server and client code align with a predefined contract, reducing mismatches.
+- Maintainability:
+  make changes to the API in the specification first,
+  work on auto-generated code later.
 
 ## How It Works
 
