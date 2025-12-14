@@ -57,7 +57,7 @@
         { pkgs }:
         {
           # the default dev environment
-          default = pkgs.mkShell {
+          default = pkgs.mkShellNoCC {
             # The Nix packages installed in the dev environment.
             packages = with pkgs; [
               # --- others --- #
@@ -98,7 +98,7 @@
 
           # This dev environment is used in CI.
           # "nix develop .#gen"
-          gen = pkgs.mkShell {
+          gen = pkgs.mkShellNoCC {
             # The Nix packages installed in the dev environment.
             packages = with pkgs; [
               rustToolchain
