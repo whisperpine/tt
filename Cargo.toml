@@ -12,7 +12,7 @@ edition = "2024"
 
 [workspace.dependencies]
 axum = "0.8"
-axum-extra = { version = "0.10", features = ["cookie", "query"] }
+axum-extra = { version = "0.12", features = ["cookie", "query"] }
 tokio = { version = "1.43.0", features = ["full"] }
 sqlx = { version = "0.8.3", features = [
   "postgres",
