@@ -2,7 +2,6 @@
 //!
 //! HTTP server application for the tt project.
 
-#![cfg_attr(debug_assertions, allow(unused))]
 #![cfg_attr(
     not(debug_assertions),
     deny(warnings, missing_docs),
