@@ -24,7 +24,7 @@ async fn main() {
 fn get_database_url() -> String {
     const DATABASE_URL: &str = "DATABASE_URL";
     std::env::var(DATABASE_URL).unwrap_or_else(|_| {
-        panic!("cannot find env var: {DATABASE_URL}");
+        panic!("Cannot find env var: {DATABASE_URL}.");
     })
 }
 
