@@ -24,7 +24,7 @@ edition = "2024"
 
 [workspace.dependencies]
 axum = "0.8"
-axum-extra = { version = "0.10", features = ["cookie", "query"] }
+axum-extra = { version = "0.12", features = ["cookie", "query"] }
 tokio = { version = "1.43.0", features = ["full"] }
 sqlx = { version = "0.8.3", features = [
   "postgres",
@@ -64,6 +64,8 @@ rust-2024-compatibility = { level = "warn", priority = -1 }
 missing_debug_implementations = "deny"
 unreachable_pub = "deny"
 unsafe_code = "forbid"
+# Temporarily allow the warning introduced by openapi-generator.
+deprecated = "allow"
 
 # Rustdoc lints (https://doc.rust-lang.org/rustdoc/lints.html).
 [workspace.lints.rustdoc]

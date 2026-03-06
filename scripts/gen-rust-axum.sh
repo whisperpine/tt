@@ -31,6 +31,8 @@ cargo fmt --package $package_name
 lints='
 [lints.rust]
 mismatched_lifetime_syntaxes = "allow"
+# Temporarily allow the warning introduced by openapi-generator.
+deprecated = "allow"
 
 [lints.rustdoc]
 bare_urls = "allow"
