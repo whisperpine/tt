@@ -40,6 +40,7 @@ jobs:
         with:
           context: .
           push: true
+          sbom: false
           provenance: false
           platforms: linux/amd64,linux/arm64
           labels: ${{ steps.meta.outputs.labels }}
