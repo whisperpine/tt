@@ -11,14 +11,10 @@ jobs:
     permissions:
       packages: write
     steps:
-      - name: Delete old container images
-        # This action will only delete a maximum of 100 versions in one run.
-        uses: actions/delete-package-versions@v5
-        with:
-          package-name: tt-http-app
-          package-type: container
-          # This regex matches "latest" or SemVer (e.g., v1.2.3, 2.0.0-beta).
-          ignore-versions: '^(latest|v?\\d+(\\.\\d+)*(-.+)?)$'
-          # The number of latest versions to keep.
-          # When set to 0, all deletable versions will be deleted.
-          min-versions-to-keep: 5
+      - name: Cleanup container images in ghcr
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          OWNER: "${{ github.repository_owner }}"
+          PACKAGE_NAME: "tt-http-app"
+          ORG_OR_USER: "user"
+        run: bash ./scripts/cleanup-ghcr.sh
