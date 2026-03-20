@@ -26,7 +26,7 @@ for var in "${required_vars[@]}"; do
 done
 
 # "latest" or semantic versions (prefix "v" is allowed).
-regex_to_keep="^(latest|v?\d+\.\d+\.\d+(-.+)?)$"
+regex_to_keep='^(latest|v?[0-9]+\.[0-9]+\.[0-9]+(-.+)?)$'
 
 # The endpoints of organization and user are different.
 org_endpoint="https://api.github.com/orgs/${OWNER}/packages/container/${PACKAGE_NAME}/versions"
