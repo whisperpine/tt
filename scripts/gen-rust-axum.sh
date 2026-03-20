@@ -25,7 +25,7 @@ openapi-generator-cli generate \
 ## Learn more about "openapi-generator-cli generate" command.
 # openapi-generator-cli help generate
 
-# Format to generated code by cargo-fmt.
+# Format the generated code by cargo-fmt.
 cargo fmt --package $package_name
 
 lints='
