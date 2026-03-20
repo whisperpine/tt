@@ -42,13 +42,12 @@ else
   exit 1
 fi
 
-get_id_tags() {
+get_versions() {
   curl -s -L \
     -H "Authorization: Bearer ${GITHUB_TOKEN}" \
     -H "Accept: application/vnd.github+json" \
     -H "X-GitHub-Api-Version: 2026-03-10" \
-    "$endpoint" |
-    jq -c '.[] | {id: .id, tags: .metadata.container.tags}'
+    "$endpoint" | jq -c '.[]'
 }
 
 delete_version() {
@@ -61,9 +60,9 @@ delete_version() {
 }
 
 # Remove all packages that don't match the regex.
-get_id_tags | while read -r version; do
+get_versions | while read -r version; do
   id=$(echo "$version" | jq -r '.id')
-  tags=$(echo "$version" | jq -r '.tags[]')
+  tags=$(echo "$version" | jq -r '.metadata.container.tags[]')
 
   keep=0
   for tag in $tags; do
@@ -71,9 +70,12 @@ get_id_tags | while read -r version; do
       keep=1
     fi
   done
+  # Keep untagged packages (which may be the manifests referred by an image).
+  if [ -z "$tags" ]; then
+    keep=1
+  fi
 
   if [[ "$keep" == 0 ]]; then
-    # echo "id: $id, tags: $tags"
     delete_version "$id"
   fi
 done
