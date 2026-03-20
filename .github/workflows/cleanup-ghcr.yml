@@ -6,17 +6,17 @@ on:
     - cron: "15 5 * * 6"
 
 jobs:
-  delete-versions:
+  delete-packages:
     runs-on: ubuntu-latest
     permissions:
       packages: write
     steps:
-      - name: Delete Old Image Versions
+      - name: Delete old container images
         # This action will only delete a maximum of 100 versions in one run.
         uses: actions/delete-package-versions@v5
         with:
-          package-name: ghcr.io/${{ github.repository_owner }}/tt-http-app
-          package-type: "container"
+          package-name: tt-http-app
+          package-type: container
           # This regex matches "latest" or SemVer (e.g., v1.2.3, 2.0.0-beta).
           ignore-versions: '^(latest|v?\d+\.\d+\.\d+(-.+)?)$'
           # The number of latest versions to keep.
