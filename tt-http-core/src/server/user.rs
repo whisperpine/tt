@@ -1,4 +1,5 @@
-use axum_extra::extract::{CookieJar, Host};
+use axum_extra::extract::CookieJar;
+use axum_extra::headers::Host;
 use http::Method;
 use tt_openapi::apis::users::{GetUserByIdResponse, ListUsersResponse};
 use tt_openapi::models;
