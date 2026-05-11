@@ -28,19 +28,15 @@ jobs:
         shell: nix shell nixpkgs#cocogitto --quiet --command bash {0}
         run: cog check HEAD..HEAD
 
-  markdownlint:
+  rumdl:
+    name: lint markdown by rumdl
     runs-on: ubuntu-latest
-    name: lint markdown by markdownlint
     steps:
       - uses: actions/checkout@v6
       - uses: cachix/install-nix-action@v31
-      - name: Run markdownlint command
-        shell: nix shell nixpkgs#markdownlint-cli --quiet --command bash {0}
-        run: |
-          markdownlint \
-              --ignore ./tt-openapi \
-              --ignore ./target \
-              .
+      - name: Run rumdl command
+        shell: nix shell nixpkgs#rumdl --quiet --command bash {0}
+        run: rumdl check .
 
   cargo-clippy:
     runs-on: ubuntu-latest
