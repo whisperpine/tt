@@ -61,6 +61,7 @@
             # The Nix packages installed in the dev environment.
             packages = with pkgs; [
               # --- others --- #
+              rumdl # markdown linter
               just # just a command runner
               typos # check typo issues
               git-cliff # generate changelog
