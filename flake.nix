@@ -79,7 +79,7 @@
               redocly # lint openapi and generate docs
 
               # --- postgres --- #
-              postgresql_17 # for `psql` command
+              postgresql_18 # for `psql` command
               sqlfluff # sql linter and formatter
               pgcli # an alternative to psql
             ];
