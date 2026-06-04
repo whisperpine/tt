@@ -26,7 +26,7 @@ edition = "2024"
 axum = "0.8"
 axum-extra = { version = "0.12", features = ["cookie", "query"] }
 tokio = { version = "1.43.0", features = ["full"] }
-sqlx = { version = "0.8.3", features = [
+sqlx = { version = "0.9.0", features = [
   "postgres",
   "runtime-tokio",
   "tls-rustls",
