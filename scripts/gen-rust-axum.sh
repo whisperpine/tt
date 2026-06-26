@@ -43,3 +43,4 @@ echo "$lints" >>./tt-openapi/Cargo.toml
 
 # Format the generated code by cargo-fmt.
 cargo fmt --package $package_name
+cargo fmt

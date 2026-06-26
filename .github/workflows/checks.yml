@@ -71,6 +71,20 @@ jobs:
           RUSTDOCFLAGS="-D warnings" cargo doc --no-deps
           cargo test --doc
 
+  cargo-fmt:
+    name: check rust formatting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+      - name: Cache Rust dependencies
+        uses: Swatinem/rust-cache@v2
+      - name: Run cargo fmt
+        run: cargo fmt --check
+
   gen-up-to-date:
     runs-on: ubuntu-latest
     name: check if generated code is update to date

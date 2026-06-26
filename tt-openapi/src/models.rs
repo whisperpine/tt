@@ -147,7 +147,9 @@ impl std::str::FromStr for User {
             let val = match string_iter.next() {
                 Some(x) => x,
                 None => {
-                    return std::result::Result::Err("Missing value while parsing User".to_string());
+                    return std::result::Result::Err(
+                        "Missing value while parsing User".to_string(),
+                    );
                 }
             };
 
