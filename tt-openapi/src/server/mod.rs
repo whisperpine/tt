@@ -77,11 +77,10 @@ where
         .echo_back(&method, &host, &cookies, &body)
         .await;
 
-    let mut response = Response::builder();
-
     let resp = match result {
         Ok(rsp) => match rsp {
             apis::echo::EchoBackResponse::Status200_SuccessfulResponse(body) => {
+                let mut response = Response::builder();
                 let mut response = response.status(200);
                 {
                     let mut response_headers = response.headers_mut().unwrap();
@@ -92,6 +91,7 @@ where
                 response.body(Body::from(body_content))
             }
             apis::echo::EchoBackResponse::Status400_BadRequest => {
+                let mut response = Response::builder();
                 let mut response = response.status(400);
                 response.body(Body::empty())
             }
@@ -151,11 +151,10 @@ where
         .get_user_by_id(&method, &host, &cookies, &path_params)
         .await;
 
-    let mut response = Response::builder();
-
     let resp = match result {
         Ok(rsp) => match rsp {
             apis::users::GetUserByIdResponse::Status200_SuccessfulResponse(body) => {
+                let mut response = Response::builder();
                 let mut response = response.status(200);
                 {
                     let mut response_headers = response.headers_mut().unwrap();
@@ -174,6 +173,7 @@ where
                 response.body(Body::from(body_content))
             }
             apis::users::GetUserByIdResponse::Status404_UserNotFound => {
+                let mut response = Response::builder();
                 let mut response = response.status(404);
                 response.body(Body::empty())
             }
@@ -225,11 +225,10 @@ where
 
     let result = api_impl.as_ref().list_users(&method, &host, &cookies).await;
 
-    let mut response = Response::builder();
-
     let resp = match result {
         Ok(rsp) => match rsp {
             apis::users::ListUsersResponse::Status200_SuccessfulResponseWithListOfUsers(body) => {
+                let mut response = Response::builder();
                 let mut response = response.status(200);
                 {
                     let mut response_headers = response.headers_mut().unwrap();
@@ -248,6 +247,7 @@ where
                 response.body(Body::from(body_content))
             }
             apis::users::ListUsersResponse::Status404_UserNotFound => {
+                let mut response = Response::builder();
                 let mut response = response.status(404);
                 response.body(Body::empty())
             }
