@@ -15,11 +15,9 @@ tt-openapi = { path = "../tt-openapi", version = "0.1.0-alpha" }
 axum.workspace = true
 tokio.workspace = true
 tracing.workspace = true
-tracing-subscriber.workspace = true
 thiserror.workspace = true
 async-trait.workspace = true
 axum-extra.workspace = true
-base64.workspace = true
 bytes.workspace = true
 http.workspace = true
 uuid.workspace = true

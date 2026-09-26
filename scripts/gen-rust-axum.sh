@@ -26,16 +26,23 @@ openapi-generator-cli generate \
 # openapi-generator-cli help generate
 
 lints='
+# ------------------------------------------------- #
+# allow the warning introduced by openapi-generator
+# ------------------------------------------------- #
+
 [lints.rust]
 mismatched_lifetime_syntaxes = "allow"
-# Temporarily allow the warning introduced by openapi-generator.
 deprecated = "allow"
+unreachable_code = "allow"
 
 [lints.rustdoc]
 bare_urls = "allow"
 
 [lints.clippy]
 uninlined_format_args = "allow"
+
+[lints.cargo]
+unused_dependencies = "allow"
 '
 
 # Add customized lints to eliminate warnings.

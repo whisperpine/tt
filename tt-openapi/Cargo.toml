@@ -54,14 +54,21 @@ validator = { version = "0.20", features = ["derive"] }
 [dev-dependencies]
 tracing-subscriber = "0.3"
 
+# ------------------------------------------------- #
+# allow the warning introduced by openapi-generator
+# ------------------------------------------------- #
+
 [lints.rust]
 mismatched_lifetime_syntaxes = "allow"
-# Temporarily allow the warning introduced by openapi-generator.
 deprecated = "allow"
+unreachable_code = "allow"
 
 [lints.rustdoc]
 bare_urls = "allow"
 
 [lints.clippy]
 uninlined_format_args = "allow"
+
+[lints.cargo]
+unused_dependencies = "allow"
 
