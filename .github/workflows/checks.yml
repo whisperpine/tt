@@ -5,15 +5,24 @@ on:
   push:
     branches: ["main"]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   typos:
     runs-on: ubuntu-latest
     name: check misspelling by typos
     steps:
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - uses: cachix/install-nix-action@v31
       - name: Run typos command
-        shell: nix shell nixpkgs#typos --quiet --command bash {0}
+        shell: nix shell --inputs-from . nixpkgs#typos --quiet --command bash {0}
         run: sh ./scripts/check-typos.sh
 
   cocogitto:
@@ -23,9 +32,11 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - uses: cachix/install-nix-action@v31
       - name: Check the latest commit message
-        shell: nix shell nixpkgs#cocogitto --quiet --command bash {0}
+        shell: nix shell --inputs-from . nixpkgs#cocogitto --quiet --command bash {0}
         run: cog check HEAD..HEAD
 
   rumdl:
@@ -33,9 +44,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - uses: cachix/install-nix-action@v31
       - name: Run rumdl command
-        shell: nix shell nixpkgs#rumdl --quiet --command bash {0}
+        shell: nix shell --inputs-from . nixpkgs#rumdl --quiet --command bash {0}
         run: rumdl check .
 
   cargo-clippy:
@@ -43,8 +56,10 @@ jobs:
     name: lint rust code by clippy
     steps:
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - name: Install Rust
-        uses: dtolnay/rust-toolchain@stable
+        uses: dtolnay/rust-toolchain@stable # zizmor: ignore[superfluous-actions]
         with:
           components: clippy
       - name: Cache Rust dependencies
@@ -60,8 +75,10 @@ jobs:
     name: lint rust docstring by rustdoc
     steps:
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - name: Install Rust
-        uses: dtolnay/rust-toolchain@stable
+        uses: dtolnay/rust-toolchain@stable # zizmor: ignore[superfluous-actions]
         with:
           components: rust-docs
       - name: Cache Rust dependencies
@@ -76,8 +93,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - name: Install Rust
-        uses: dtolnay/rust-toolchain@stable
+        uses: dtolnay/rust-toolchain@stable # zizmor: ignore[superfluous-actions]
         with:
           components: rustfmt
       - name: Cache Rust dependencies
@@ -90,6 +109,8 @@ jobs:
     name: check if generated code is update to date
     steps:
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - uses: cachix/install-nix-action@v31
       - name: Generate code from openapi specifications
         shell: nix develop .#gen --quiet --command bash {0}
@@ -101,12 +122,14 @@ jobs:
     name: use trivy to scan files
     runs-on: ubuntu-latest
     permissions:
-      security-events: write
+      security-events: write # required to upload SARIF results to the Security tab
     steps:
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - uses: cachix/install-nix-action@v31
       - name: Run Trivy vulnerability scanner in repo mode
-        shell: nix shell nixpkgs#trivy --quiet --command bash {0}
+        shell: nix shell --inputs-from . nixpkgs#trivy --quiet --command bash {0}
         run: |
           trivy --quiet fs . \
             --output trivy-fs-results.sarif \
@@ -132,3 +155,15 @@ jobs:
         with:
           sarif_file: trivy-config-results.sarif
           category: trivy-config-scan
+
+  zizmor:
+    name: lint github actions by zizmor
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: cachix/install-nix-action@v31
+      - name: Run zizmor command
+        shell: nix shell --inputs-from . nixpkgs#zizmor --quiet --command bash {0}
+        run: zizmor --persona=pedantic .github
