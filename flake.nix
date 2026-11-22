@@ -65,6 +65,7 @@
               typos # check typo issues
               git-cliff # generate changelog
               cocogitto # conventional commit toolkit
+              zizmor # lint github actions
               prek # better pre-commit
 
               # --- rust --- #
